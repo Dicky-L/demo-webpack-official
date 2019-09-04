@@ -1,4 +1,4 @@
 node_modules
 dist/*.png
-dist/*.tff
+dist/*.ttf
 dist/*.js
