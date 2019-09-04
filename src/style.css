@@ -1,0 +1,9 @@
+@font-face{
+  font-family: 'MyFont';
+  src: url('./Lazara.ttf')
+}
+.hello {
+  color: red;
+  background: url('./icon.png');
+  font-family: 'MyFont'
+}
