@@ -1,30 +1,22 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const WebpackManifestPlugin = require('webpack-manifest-plugin')
 
 module.exports = {
-  mode: 'development',
-  entry: './src/index.js',
+  entry: {
+    app: './src/index.js',
+    print: './src/print.js'
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.join(__dirname, 'dist')
   },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.(jpg|svg|png|gif)$/,
-        use: 'file-loader'
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/,
-        use: 'file-loader'
-      },
-      {
-        test: /\.xml$/,
-        use: 'xml-loader'
-      }
-    ]
-  }
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: '管理输出'
+    }),
+    new CleanWebpackPlugin(),
+    new WebpackManifestPlugin()
+  ]
 }
