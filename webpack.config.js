@@ -9,7 +9,8 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      _: 'lodash',
+      // _: 'lodash',
+      join: ['lodash', 'join']
     })
   ]
 }
