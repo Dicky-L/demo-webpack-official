@@ -2,16 +2,22 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
+  mode: 'development',
+  devtool: 'inline-source-map',
   entry: './src/index.js',
   output: {
     filename: 'main.js',
-    path: path.join(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist')
   },
-  module:{
-    rules:[
+  module: {
+    rules: [
       {
         test: require.resolve('./src/index.js'),
         use: 'imports-loader?this=>window'
+      },
+      {
+        test: require.resolve('./src/globals.js'),
+        use: 'exports-loader?file,parse=helpers.parse'
       }
     ]
   },

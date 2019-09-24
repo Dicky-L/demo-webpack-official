@@ -1,3 +1,7 @@
+require('exports-loader?file,parse=helpers.parse!./globals.js');
+// 使用exports-loader不能使用import语法
+// import {file} from "./globals.js"
+
 function component() {
   let element = document.createElement('div')
 
