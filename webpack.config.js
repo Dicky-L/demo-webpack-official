@@ -4,9 +4,9 @@ const webpack = require('webpack')
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
-  entry: './src/index.js',
+  entry: { index: './src/index.js', polyfill: './src/polyfill.js' },
   output: {
-    filename: 'main.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
