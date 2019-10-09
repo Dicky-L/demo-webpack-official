@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const WebpackManifestPlugin = require('webpack-manifest-plugin')
-const webpack = require('webpack')
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
   mode: 'production',
@@ -12,7 +12,15 @@ module.exports = {
     filename: 'main.js',
     path: path.join(__dirname, 'dist')
   },
-  // optimization: {
-  //   usedExports: true
-  // }
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: '渐进式网络应用程序'
+    }),
+    new CleanWebpackPlugin(),
+    new WebpackManifestPlugin(),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true
+    })
+  ]
 }
