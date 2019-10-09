@@ -5,6 +5,7 @@ const WebpackManifestPlugin = require('webpack-manifest-plugin')
 const webpack = require('webpack')
 
 module.exports = {
+<<<<<<< HEAD
   mode: 'development',
   entry: {
     app: './src/index.js'
@@ -35,4 +36,16 @@ module.exports = {
     new WebpackManifestPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
+=======
+  mode: 'production',
+  entry: './src/index.js',
+  devtool: 'source-map',
+  output: {
+    filename: 'main.js',
+    path: path.join(__dirname, 'dist')
+  },
+  // optimization: {
+  //   usedExports: true
+  // }
+>>>>>>> tree-shaking
 }
